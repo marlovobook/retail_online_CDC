@@ -27,7 +27,9 @@ x-airflow-common:
     &airflow-common-depends-on
     airflow-metastore:
       condition: service_healthy
-
+networks:
+  default:
+    name: datahub_network
 services:
   airflow-metastore:
     image: postgres:13

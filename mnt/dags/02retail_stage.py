@@ -17,6 +17,7 @@ from airflow.hooks.postgres_hook import PostgresHook
 from airflow.hooks.S3_hook import S3Hook
 from airflow.operators.dummy import DummyOperator
 from airflow.providers.common.sql.operators.sql import SQLColumnCheckOperator
+from airflow.providers.common.sql.operators.sql import SQLTableCheckOperator
 
 #Create function for loading staged table into postgres
 
@@ -136,6 +137,18 @@ with DAG(
             accept_none=True,
 
         )
+    
+    # from airflow.providers.common.sql.operators.sql import SQLTableCheckOperator
+    # SQLTableCheckOperator_task = SQLTableCheckOperator(
+    #     task_id='SQLTableCheckOperator_task',
+    #     table="wh.table_online_retail_origin",
+    #     checks ={
+    #         ""
+    #     },
+    #     partition_clause=None,
+    #     conn_id='pg_container',
+    #     database=None,
+    #     )
 
 
 
